@@ -1,5 +1,5 @@
 {
-  "name": "agile-content-cdn-convert",
+  "name": "agile-content-cdn-log-convert",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/app.js",
@@ -8,7 +8,7 @@
     "build": "tsc"
   },
   "bin": {
-    "agile-content-cdn-convert": "./cli.js"
+    "agile-content-cdn-log-convert": "./cli.js"
   },
   "keywords": [],
   "author": "Anderson de Souza <anderson17ads@hotmail.com>",
