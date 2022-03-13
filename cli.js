@@ -2,15 +2,17 @@
 'use strict'
 
 const yargs = require('yargs');
+const chalk = require('chalk');
+
 const { App } = require('./dist/app.js');
 
 const options = yargs
-  .usage(`
-    Welcome CDN Log Convert of Agile Content
-    Usage $0 <sourceUrl> <targetPath>
+  .usage(chalk`
+    {blue Welcome CDN Log Convert of {gray {bold Agile} C{green.bold o}ntent}}
+    {white Usage $0 {yellow <sourceUrl> <targetPath>}}
   `)
-  .demandCommand(2, 'You need to sourceUrl and targetPath parameter')
-  .example(`$0 https://file.txt ./target-path`)
+  .demandCommand(2, chalk.yellow('You need to sourceUrl and targetPath parameter'))
+  .example(chalk.blue(`$0 https://file.txt ./target-path`))
   .help('h')
   .alias('h', 'help')
   .argv;

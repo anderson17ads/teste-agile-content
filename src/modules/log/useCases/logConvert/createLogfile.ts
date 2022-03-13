@@ -1,10 +1,12 @@
 import fs from 'fs';
+import chalk from 'chalk';
+
 import { currentDateTime } from '../../../../utils/date';
 import { Log } from '../../domain/entities/log';
 
 export class createLogFile {
   execute(targetPath: string): void {
-    this.write(targetPath);
+    this.create(targetPath);
   }
 
   /**
@@ -13,12 +15,11 @@ export class createLogFile {
    * @param targetPath string
    * @returns void
    */
-  private write(targetPath: string): void {
+  private create(targetPath: string): void {
     const file = fs.createWriteStream(targetPath);
 
     file.on('error', error => {
-      console.log(error.message);
-      return;
+      console.log(chalk.red(error.message));      
     });
 
     file.write(`${this.header()}\n`);
@@ -26,6 +27,10 @@ export class createLogFile {
     Log.findAll().map(item => {
       const line = Object.values(item).join(' ');
       file.write(`${line}\n`);
+    });
+
+    file.on('finish', () => {
+      console.log(chalk.green('Congratulations! Your file log was converted with success'));
     });
 
     file.end();

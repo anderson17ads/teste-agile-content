@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 import { SaveDataLog } from "./saveDataLog";
 import { ReadSourceUrl } from "./readSourceUrl";
 import { createLogFile } from "./createLogfile";
@@ -17,7 +19,7 @@ export class LogConvert {
     const dataSourceUrl = await readSourceUrl.execute(this.sourceUrl);
 
     if (dataSourceUrl.error) {
-      console.log(dataSourceUrl.message);
+      console.log(chalk.red(dataSourceUrl.message));
       return;
     }
 
