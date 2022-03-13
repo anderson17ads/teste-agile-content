@@ -1,7 +1,7 @@
-import { Cdn } from "./modules/cdn/domain/cdn";
+import { Log } from "./modules/log/domain/log";
 
 export class App {
   public init(sourceUrl: string, targetPath: string): void {
-    new Cdn().logConvert(sourceUrl, targetPath);
+    new Log().logConvert(sourceUrl, targetPath);
   }
 }

@@ -1,5 +1,6 @@
 import { SaveDataLog } from "./saveDataLog";
 import { ReadSourceUrl } from "./readSourceUrl";
+import { createLogFile } from "./createLogfile";
 
 export class LogConvert {
   private sourceUrl: string;
@@ -15,9 +16,15 @@ export class LogConvert {
     const readSourceUrl = new ReadSourceUrl();    
     const dataSourceUrl = await readSourceUrl.execute(this.sourceUrl);
 
+    if (dataSourceUrl.error) {
+      console.log(dataSourceUrl.message);
+      return;
+    }
+
     // Save data in the log entity
     new SaveDataLog().execute(dataSourceUrl);
     
-    
+    // Create log file
+    new createLogFile().execute(this.targetPath);
   }
 }

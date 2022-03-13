@@ -3,7 +3,7 @@ import { LogType } from "../../domain/types/logType";
 export class PrepareDataLog {
   execute(columns: string[]): LogType {
     return {
-      provider: 'MINHA CDN',
+      provider: '"MINHA CDN"',
       httpMethod: this.httpMethod(columns[3]),
       statusCode: parseInt(columns[1]) ?? '',
       uriPath: this.uriPath(columns[3]),
